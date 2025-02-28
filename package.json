@@ -1,5 +1,5 @@
 {
-  "name": "publications-api",
+  "name": "mediamonitoring-api",
   "version": "0.0.1",
   "scripts": {
     "start": "npm run db:migration:run && nest start",

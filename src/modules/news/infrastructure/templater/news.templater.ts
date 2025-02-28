@@ -26,10 +26,10 @@ export class NewsTemplater implements NewsTemplaterInterface {
 
     const fillTemplateWithData = this.templater.compile(blankTemplate);
 
-    const data = news.map((pieceOfNews) => {
+    const data = news.map((item) => {
       return {
-        url: pieceOfNews.url,
-        title: pieceOfNews.title,
+        url: item.url,
+        title: item.title,
       };
     });
 

@@ -19,8 +19,4 @@ export class Uuid {
   public static generate(): Uuid {
     return new Uuid({ value: v4() });
   }
-
-  public static isGuid(value: string): boolean {
-    return validate(value);
-  }
 }

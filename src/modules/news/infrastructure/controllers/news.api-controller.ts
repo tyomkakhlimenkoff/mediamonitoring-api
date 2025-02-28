@@ -13,7 +13,7 @@ import { CreateNewsCommand } from '@news/infrastructure/commands/create-news.com
 import { CreateNewsReportCommand } from '@news/infrastructure/commands/create-news-report.command';
 import { CreateNewsReportResult } from '@news/infrastructure/commands/create-news-report.command-handler';
 import { CreateNewsResult } from '@news/infrastructure/commands/create-news.command-handler';
-import { FileType } from 'src/modules/files/application/enums/file-type.enum';
+import { FileType } from 'src/modules/files/infrastructure/commands/create-file.command';
 import { GetAllNewsWithDateQuery } from '@news/infrastructure/queries/get-all-news-with-date.query';
 import { GetAllNewsWithDateResult } from '@news/infrastructure/queries/get-all-news-with-date.query-handler';
 import { GetNewsReportRequest } from '@news/infrastructure/controllers/requests/get-news-report.request';
@@ -98,7 +98,7 @@ export class NewsApiController {
       const filePath = await this.commandBus.execute<
         CreateFileCommand,
         CreateFileResult
-      >(new CreateFileCommand(newsReportText, FileType.Html));
+      >(new CreateFileCommand(newsReportText, FileType.HTML));
 
       return filePath;
     } catch (_error) {
