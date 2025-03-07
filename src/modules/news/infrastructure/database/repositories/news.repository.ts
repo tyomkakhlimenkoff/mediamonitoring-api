@@ -17,14 +17,12 @@ export class NewsRepository
 
   private readonly TABLE_NAME = 'news';
 
-  public async createNews(news: News): Promise<News> {
-    const savedNews = await this.save({
+  public async createNews(news: News): Promise<void> {
+    await this.save({
       id: news.id,
       title: news.title,
       url: news.url,
     });
-
-    return this.toDomainEntity(savedNews);
   }
 
   public async getNewsByIds(ids: Uuid[]): Promise<News[]> {

@@ -1,5 +1,5 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { CreateNewsReportCommand } from '@news/infrastructure/commands/create-news-report.command';
+import { CreateNewsReportCommand } from '@news/application/commands/create-news-report.command';
 import { Inject } from '@nestjs/common';
 import { NewsRepository } from '@news/infrastructure/database/repositories/news.repository';
 import { NewsRepositoryInterface } from '@news/domain/interfaces/news-repository.interface';

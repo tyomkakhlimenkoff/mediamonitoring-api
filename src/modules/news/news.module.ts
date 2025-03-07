@@ -1,15 +1,17 @@
 import Handlebars from 'handlebars';
 import { CqrsModule } from '@nestjs/cqrs';
-import { CreateNewsCommandHandler } from '@news/infrastructure/commands/create-news.command-handler';
-import { GetAllNewsWithDateHandler } from '@news/infrastructure/queries/get-all-news-with-date.query-handler';
+import { CreateNewsCommandHandler } from '@news/application/commands/create-news.command-handler';
+import { GetAllNewsWithDateHandler } from '@news/application/queries/get-all-news-with-date.query-handler';
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { NewsApiController } from '@news/infrastructure/controllers/news.api-controller';
+import { CreateNewsController } from '@news/infrastructure/controllers/news.api-controller';
+import { GetAllNewsController } from '@news/infrastructure/controllers/get-all-news.api-controller';
+import { CreateNewsReportController } from '@news/infrastructure/controllers/create-news-report.api-controller';
 import { NewsEntity } from '@news/infrastructure/database/entities/news.entity';
 import { NewsRepository } from '@news/infrastructure/database/repositories/news.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { NewsTemplater } from '@news/infrastructure/templater/news.templater';
-import { CreateNewsReportCommandHandler } from '@news/infrastructure/commands/create-news-report.command-handler';
+import { CreateNewsReportCommandHandler } from '@news/application/commands/create-news-report.command-handler';
 import { FilesModule } from 'src/modules/files/files.module';
 
 export const TemplaterProviderToken = Symbol('TemplaterProviderToken');
@@ -21,7 +23,11 @@ const modules = [
   TypeOrmModule.forFeature([NewsEntity]),
 ];
 
-const apiControllers = [NewsApiController];
+const apiControllers = [
+  CreateNewsController,
+  GetAllNewsController,
+  CreateNewsReportController,
+];
 
 const repositories = [{ provide: NewsRepository, useClass: NewsRepository }];
 

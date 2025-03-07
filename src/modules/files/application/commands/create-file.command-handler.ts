@@ -2,10 +2,10 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import {
   CreateFileCommand,
   FileType,
-} from 'src/modules/files/infrastructure/commands/create-file.command';
+} from 'src/modules/files/application/commands/create-file.command';
 import { Uuid } from '@shared/value-objects/uuid';
-import { UnableToGetFileNameError } from 'src/modules/files/infrastructure/commands/errors/unable-to-get-file-name.error';
-import { UnableToSaveFileError } from 'src/modules/files/infrastructure/commands/errors/unable-to-save-file.error';
+import { UnableToGetFileNameError } from 'src/modules/files/application/commands/errors/unable-to-get-file-name.error';
+import { UnableToSaveFileError } from 'src/modules/files/application/commands/errors/unable-to-save-file.error';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
